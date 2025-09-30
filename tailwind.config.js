@@ -41,8 +41,8 @@ export default {
           200: "#00194F",
         },
         // 배경색 전용
-        "bg-white": "#F7F9FF",
-        "bg-black": "#232323",
+        "p-white": "#F7F9FF",
+        "p-black": "#232323",
       },
       boxShadow: {
         primary: "0 2px 8px 0 rgba(255, 85, 0, 0.12)",
