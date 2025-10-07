@@ -15,8 +15,11 @@ function index() {
       <div className="fixed flex flex-col gap-[10px] bottom-10 left-16 right-16">
         <button 
           onClick={handleLoginSkip}
-          className="py-3 text-white bg-primary-600 rounded-12">로그인 없이 간편 사용하기</button>
-        <button className="py-3 text-black bg-yellow-400 rounded-12">카카오 시작하기</button>
+          className="py-16 text-white text-17 bg-primary-600 rounded-12">로그인 없이 간편 사용하기</button>
+        {/* <button className="py-3 text-black bg-yellow-400 rounded-12">카카오 시작하기</button> */}
+        <button className='w-full'>
+          <img src="/src/assets/Kakao-login-btn.svg" alt="카카오 시작하기" className='w-full'/>
+        </button>
       </div>
     </div>
   );
