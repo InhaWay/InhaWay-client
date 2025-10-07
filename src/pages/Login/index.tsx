@@ -1,7 +1,11 @@
-import React from "react";
+
 
 function index() {
-  return <div>안녕하세요 로그인 페이지입니다.</div>;
+  return <div className='px-16 bg-p-white'>
+    <div className='flex flex-col items-center justify-center min-h-screen'>
+      <img src="/src/assets/Character.svg" alt="인하로운길 캐릭터" className='w-full'/>
+    </div>
+  </div>;
 }
 
 export default index;
