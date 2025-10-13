@@ -36,7 +36,7 @@ const NaverMap = () => {
 
   return (
     <div className='w-full h-screen'>
-      <div ref={mapRef} className='w-full h-[360px]' />
+      <div ref={mapRef} className='w-full h-[420px]' />
     </div>
   )
 }
