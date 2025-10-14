@@ -68,7 +68,7 @@ const NaverMap = () => {
   // 지도 초기화 및 마커 설정
   useEffect(() => {
     if (!isLoaded || !mapRef.current) return;
-    const centerPosition = new window.naver.maps.LatLng(37.44902, 126.657111);
+    const centerPosition = new window.naver.maps.LatLng(37.447935, 126.657529);
 
     const mapOptions = {
       center: centerPosition,
