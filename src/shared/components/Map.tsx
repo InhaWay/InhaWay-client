@@ -93,7 +93,7 @@ const NaverMap = () => {
   }, [isLoaded, buildings]);
   return (
     <div className="w-full h-screen">
-      <div ref={mapRef} className="w-full h-[420px]" />
+      <div ref={mapRef} className="w-full h-full" />
     </div>
   );
 }
