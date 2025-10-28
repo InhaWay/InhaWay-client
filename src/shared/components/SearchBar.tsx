@@ -28,20 +28,25 @@ const SearchBar = ({
     
     const [searchTerm, setSearchTerm] = useState("");
     const handleSearch = () => {
-    const found = buildings.find(b => 
-      b.name.includes(searchTerm) ||
-      b.code.includes(searchTerm)
-    )
-    if(found) {
-      onSearch(found);
-      setSearchTerm(found.name)
-    } else {
-      console.log("건물을 찾을 수 없습니다.");
-      
-      // 토스트 표시
-      setToastMessage("해당하는 건물 데이터가 없습니다.");
-      setShowToast(true);
-    }
+      if(searchTerm.trim() === "") {
+        setToastMessage("건물명을 입력해주세요!");
+        setShowToast(true);
+        return;
+      }
+      const found = buildings.find(b => 
+        b.name.includes(searchTerm) ||
+        b.code.includes(searchTerm)
+      )
+      if(found) {
+        onSearch(found);
+        setSearchTerm(found.name)
+      } else {
+        console.log("건물을 찾을 수 없습니다.");
+        
+        // 토스트 표시
+        setToastMessage("해당하는 건물 데이터가 없습니다.");
+        setShowToast(true);
+      }
   }
 
   return (
