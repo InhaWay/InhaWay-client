@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 interface ToastMessageProps {
   message: string;
-  type: 'info';
   duration?: number;
   onClose: () => void;
 }
