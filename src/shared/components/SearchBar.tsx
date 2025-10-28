@@ -39,18 +39,18 @@ const SearchBar = ({
 
   return (
     <div className="relative w-full px-16 py-12 bg-p-white">
-      <div className="flex items-center gap-12 px-12 py-12 bg-gray-100 rounded-12">
+      <div className="flex items-center gap-12 px-2 py-2 bg-gray-100 rounded-12">
         <Search className="w-20 h-20 text-gray-400" />
         <input 
           type="text" 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value) }
           placeholder={placeholder} 
-          className="flex-1 text-gray-600 bg-gray-100 outline-none text-16" 
+          className="flex-1 text-gray-600 bg-gray-100 outline-none text-17" 
         />
         <button 
           onClick={handleSearch}
-          className="px-2 py-1 bg-primary-600 text-p-white rounded-8">검색</button>
+          className="px-3 py-2 font-bold bg-primary-600 text-p-white rounded-8">검색</button>
       </div>
     </div>
   );
