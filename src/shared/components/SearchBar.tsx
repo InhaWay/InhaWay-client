@@ -67,6 +67,7 @@ const SearchBar = ({
         </div>
       </div>
       {/* 토스트 메시지 */}
+
       <AnimatePresence>
         {showToast && <ToastMessage message={toastMessage} duration={1500} onClose={() => setShowToast(false)} />}
       </AnimatePresence>
