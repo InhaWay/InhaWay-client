@@ -47,7 +47,8 @@ const useGeolocation = () => {
         error: errorMessage,
       }));
     };
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    navigator.geolocation.watchPosition(successCallback, errorCallback);
   }, []);
   return locationState;
 };
