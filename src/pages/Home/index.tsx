@@ -2,19 +2,9 @@ import { useState } from "react";
 import NaverMap from "../../shared/components/Map";
 import LocationSelector from "../../shared/components/LocationSelector";
 import SearchBar from "../../shared/components/SearchBar";
-// import LocationFetcher from '../../shared/components/LocationFetcher';
+import type { Building } from "../../types/Building";
 
-interface Building {
-  _id: string;
-  name: string;
-  code: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
-}
-
-function index() {
+function Index() {
   const [buildings, setBuildings] = useState<Building[]>([]);
   const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(null);
   return (
@@ -31,4 +21,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
