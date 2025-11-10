@@ -2,18 +2,9 @@ import { useState } from "react";
 import NaverMap from "../../shared/components/Map";
 import LocationSelector from "../../shared/components/LocationSelector";
 import SearchBar from "../../shared/components/SearchBar";
+import type { Building } from "../../types/Building";
 
-interface Building {
-  _id: string;
-  name: string;
-  code: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
-}
-
-function index() {
+function Index() {
   const [buildings, setBuildings] = useState<Building[]>([]);
   const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(null);
   return (
@@ -21,6 +12,7 @@ function index() {
       <SearchBar buildings={buildings} onSearch={setSelectedBuilding} />
       <div className="relative h-screen">
         <NaverMap onBuildingsLoaded={setBuildings} selectedBuilding={selectedBuilding} />
+        {/* <LocationFetcher /> */}
         <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-p-white rounded-t-24">
           <LocationSelector />
         </div>
@@ -29,4 +21,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

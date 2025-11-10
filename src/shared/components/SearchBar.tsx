@@ -2,17 +2,7 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 import ToastMessage from './ToastMessage';
 import { AnimatePresence } from "framer-motion";
-
-interface Building {
-  _id: number;
-  name: string;
-  code: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
-}
-
+import type { Building } from "../../types/Building";
 interface SearchBarProps {
   placeholder?: string;
   buildings: Building[];
@@ -67,6 +57,7 @@ const SearchBar = ({
         </div>
       </div>
       {/* 토스트 메시지 */}
+
       <AnimatePresence>
         {showToast && <ToastMessage message={toastMessage} duration={1500} onClose={() => setShowToast(false)} />}
       </AnimatePresence>
