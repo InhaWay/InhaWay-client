@@ -35,7 +35,10 @@ const NaverMap = ({ onBuildingsLoaded, selectedBuilding, routeQuery }: NaverMapP
 
   // 폴리라인 lat, lng 값 호출하기
   useEffect(() => {
-    if (!routeQuery) return;
+    if (!routeQuery){
+      setRoutePath(null);
+      return;
+    }
     if (!isLoaded) return;
 
     const routeKey = `${routeQuery?.start}-${routeQuery?.end}`;
@@ -57,7 +60,14 @@ const NaverMap = ({ onBuildingsLoaded, selectedBuilding, routeQuery }: NaverMapP
 
   // 폴리라인 그리기
   useEffect(() => {
-    if (!routePath) return;
+    if (!routePath) {
+      if (polylineRef.current) {
+        polylineRef.current.setMap(null);
+        polylineRef.current = null;
+        console.log("폴리라인 제거됨");
+      }
+      return; 
+    }
     if (!mapInstanceRef.current) return;
 
     console.log("폴리라인 그리기 시작");
