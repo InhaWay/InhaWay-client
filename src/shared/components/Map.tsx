@@ -83,7 +83,7 @@ const NaverMap = ({ onBuildingsLoaded, selectedBuilding, routeQuery }: NaverMapP
       .sort((a: any, b: any) => a.order - b.order) // order 순서대로 정렬
       .map((point: any) => new (window as any).naver.maps.LatLng(point.lat, point.lng));
 
-    console.log("📍 좌표 개수:", pathCoords.length);
+    console.log("좌표 개수:", pathCoords.length);
 
     // Polyline 생성
     const polyline = new (window as any).naver.maps.Polyline({
@@ -181,7 +181,7 @@ const NaverMap = ({ onBuildingsLoaded, selectedBuilding, routeQuery }: NaverMapP
     const userPosition = new naver.maps.LatLng(lat, lng);
 
     if (!userMarkerRef.current) {
-      // 1. 마커가 없으면 (최초 1회 실행): 사용자 위치 마커 생성
+      // 1. 마커가 없으면: 사용자 위치 마커 생성
       console.log("현재 위치 마커 생성");
 
       userMarkerRef.current = new naver.maps.Marker({
