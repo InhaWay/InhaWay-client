@@ -1,13 +1,33 @@
 import { useState } from 'react'
 
-const LocationSelector = () => {
-  const [startLocation, setStartLocation] = useState<string>('');
-  const [endLocation, setEndLocation] = useState<string>('');
+// interface Building {
+//   _id: string;
+//   name: string;
+//   code: string;
+//   coordinates: {
+//     lat: number;
+//     lng: number;
+//   };
+// }
 
-  // TODO : 추후 API 연동
+interface LocationSelectorProps {
+  // buildings: Building[]; // 자동완성용
+  onRouteSearch: (start: string, end: string) => void; // 검색 결과 전달
+}
+
+const LocationSelector = ({ onRouteSearch }: LocationSelectorProps) => {
+  const [start, setStart] = useState<string>("");
+  const [end, setEnd] = useState<string>("");
+
   const handleSearchRoute = () => {
-    console.log("길 안내 시작");
-  }
+    if (!start || !end) {
+      // 토스트: "출발지와 도착지를 입력하세요"
+      return;
+    }
+
+    // Main으로 전달
+    onRouteSearch(start, end);
+  };
   return (
     <div className="px-16 py-16">
       <div className="bg-p-white rounded-[10px] overflow-hidden shadow-[0, 2px, 8px, rgba(0,0,0,01)]">
@@ -16,8 +36,8 @@ const LocationSelector = () => {
           <label className="font-bold text-17 text-primary-600">출발</label>
           <input
             type="text"
-            value={startLocation}
-            onChange={(e) => setStartLocation(e.target.value)}
+            value={start}
+            onChange={(e) => setStart(e.target.value)}
             placeholder="출발지를 입력하세요 (예: 7호관)"
             className="flex-1 px-12 py-12 text-gray-600 bg-gray-100 outline-none text-14 rounded-8"
           />
@@ -27,8 +47,8 @@ const LocationSelector = () => {
           <label className="font-bold text-17 text-primary-600">도착</label>
           <input
             type="text"
-            value={endLocation}
-            onChange={(e) => setEndLocation(e.target.value)}
+            value={end}
+            onChange={(e) => setEnd(e.target.value)}
             placeholder="도착지를 입력하세요 (예: 본관)"
             className="flex-1 px-12 py-12 text-gray-600 bg-gray-100 outline-none text-14 rounded-8"
           />
@@ -43,6 +63,6 @@ const LocationSelector = () => {
       </button>
     </div>
   );
-}
+};
 
 export default LocationSelector
