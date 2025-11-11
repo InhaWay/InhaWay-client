@@ -1,32 +1,30 @@
 import { useState } from 'react'
 
-// interface Building {
-//   _id: string;
-//   name: string;
-//   code: string;
-//   coordinates: {
-//     lat: number;
-//     lng: number;
-//   };
-// }
-
 interface LocationSelectorProps {
   // buildings: Building[]; // 자동완성용
   onRouteSearch: (start: string, end: string) => void; // 검색 결과 전달
+  onRouteClear : () => void;
 }
 
-const LocationSelector = ({ onRouteSearch }: LocationSelectorProps) => {
+const LocationSelector = ({ onRouteSearch, onRouteClear }: LocationSelectorProps) => {
   const [start, setStart] = useState<string>("");
   const [end, setEnd] = useState<string>("");
+  const [isRouteActive, setIsRouteActive] = useState<boolean>(false);
 
   const handleSearchRoute = () => {
-    if (!start || !end) {
-      // 토스트: "출발지와 도착지를 입력하세요"
-      return;
+    if (isRouteActive) {
+      console.log("경로 종료");
+      onRouteClear();
+      setIsRouteActive(false);
+    } else {
+        if (!start || !end) {
+        alert('출발지와 도착지를 입력하세요');
+        return;
+      }
+      // Main으로 전달
+      onRouteSearch(start, end);
+      setIsRouteActive(true)
     }
-
-    // Main으로 전달
-    onRouteSearch(start, end);
   };
   return (
     <div className="px-16 py-16">
@@ -39,6 +37,7 @@ const LocationSelector = ({ onRouteSearch }: LocationSelectorProps) => {
             value={start}
             onChange={(e) => setStart(e.target.value)}
             placeholder="출발지를 입력하세요 (예: 7호관)"
+            disabled={isRouteActive} 
             className="flex-1 px-12 py-12 text-gray-600 bg-gray-100 outline-none text-14 rounded-8"
           />
         </div>
@@ -50,6 +49,7 @@ const LocationSelector = ({ onRouteSearch }: LocationSelectorProps) => {
             value={end}
             onChange={(e) => setEnd(e.target.value)}
             placeholder="도착지를 입력하세요 (예: 본관)"
+            disabled={isRouteActive} 
             className="flex-1 px-12 py-12 text-gray-600 bg-gray-100 outline-none text-14 rounded-8"
           />
         </div>
@@ -59,7 +59,7 @@ const LocationSelector = ({ onRouteSearch }: LocationSelectorProps) => {
         onClick={handleSearchRoute}
         className="w-full py-16 mt-20 font-bold text-white bg-primary-600 rounded-[10px] text-17"
       >
-        길 안내 시작
+        {isRouteActive ? '길 안내 종료' : '길 안내 시작'}
       </button>
     </div>
   );
